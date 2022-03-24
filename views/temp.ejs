@@ -75,8 +75,8 @@
         </div>
       </nav>
     </div>
-    <div>
-      <table class="table-primary">
+    <div style="padding-left: 260px; padding-right: 260px; padding-top: 20px">
+      <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -87,7 +87,7 @@
         </thead>
         <tbody>
           <% data.forEach(function(item){ %> <% if (item.active == true) { %>
-          <tr class="table-success" style="background-color: green">
+          <tr class="table-success">
             <td class="table-success"><%= item._id %></td>
             <td class="table-success"><%= item.name %></td>
             <td class="table-success"><%= item.place %></td>
