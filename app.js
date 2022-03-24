@@ -1,0 +1,46 @@
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 5015;
+const User = require("./Models/User");
+app.set("view engine", "ejs");
+
+app.use(express.json());
+
+app.get("/home", (req, res) => {
+  User.find().then((data) => {
+    res.render("temp", { data: data, heading: "Users" });
+  });
+});
+
+app.post("/api/create", (req, res) => {
+  const body = req.body;
+
+  const user = new User({
+    name: body.name,
+    active: body.active,
+    mobile: body.mobile,
+    age: body.age,
+    place: body.place,
+  });
+
+  user.save().then((data) => {
+    res.json({ message: "User created Sucessfully", data: data });
+  });
+});
+//KCXm5qjxW1a7yY2S
+const mongoose = require("mongoose");
+// const bodyParser = require("body-parser");
+mongoose
+  .connect(
+    "mongodb+srv://Hrishi:KCXm5qjxW1a7yY2S@cluster0.1nqxb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  )
+  .then((data) => {
+    console.log("DB connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+app.listen(port, () => {
+  console.log("server connection sucessfully");
+});
