@@ -83,6 +83,8 @@
             <th scope="col">Name</th>
             <th scope="col">Place</th>
             <th scope="col">Mobile.No</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -92,13 +94,25 @@
             <td class="table-success"><%= item.name %></td>
             <td class="table-success"><%= item.place %></td>
             <td class="table-success"><%= item.mobile %></td>
+            <td class="table-success">
+              <button type="button" class="btn btn-primary">Edit</button>
+            </td>
+            <td class="table-success">
+              <button type="button" class="btn btn-danger">Delete</button>
+            </td>
           </tr>
           <% } else { %>
-          <tr class="table-danger" style="background-color: red">
+          <tr class="table-danger">
             <td class="table-danger"><%= item._id %></td>
             <td class="table-danger"><%= item.name %></td>
             <td class="table-danger"><%= item.place %></td>
             <td class="table-danger"><%= item.mobile %></td>
+            <td class="table-danger">
+              <button type="button" class="btn btn-primary">Edit</button>
+            </td>
+            <td class="table-danger">
+              <button type="button" class="btn btn-danger">Delete</button>
+            </td>
           </tr>
           <% } %> <% }) %>
         </tbody>
