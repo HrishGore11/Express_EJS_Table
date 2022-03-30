@@ -13,8 +13,8 @@
     <title>Express_Ejs</title>
   </head>
   <body>
-    <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div style="background-color: #ea868f">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button
@@ -31,51 +31,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                <a class="nav-link active" aria-current="page" href="/home"
+                  >Home</a
                 >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link" href="/Add">Add User + </a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
     </div>
     <div style="padding-left: 260px; padding-right: 260px; padding-top: 20px">
+      <h4><%=heading%></h4>
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -88,17 +57,21 @@
           </tr>
         </thead>
         <tbody>
-          <% data.forEach(function(item){ %> <% if (item.active == true) { %>
+          <% data.forEach(function(item){ %> <% if (item.active === true) { %>
           <tr class="table-success">
             <td class="table-success"><%= item._id %></td>
             <td class="table-success"><%= item.name %></td>
             <td class="table-success"><%= item.place %></td>
             <td class="table-success"><%= item.mobile %></td>
             <td class="table-success">
-              <button type="button" class="btn btn-primary">Edit</button>
+              <a href="/edit/<%= item._id %>">
+                <button type="button" class="btn btn-primary">Edit</button>
+              </a>
             </td>
             <td class="table-success">
-              <button type="button" class="btn btn-danger">Delete</button>
+              <a href="/delete/<%= item._id %>">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </a>
             </td>
           </tr>
           <% } else { %>
@@ -108,10 +81,14 @@
             <td class="table-danger"><%= item.place %></td>
             <td class="table-danger"><%= item.mobile %></td>
             <td class="table-danger">
-              <button type="button" class="btn btn-primary">Edit</button>
+              <a href="/edit/<%= item._id %>">
+                <button type="button" class="btn btn-primary">Edit</button>
+              </a>
             </td>
             <td class="table-danger">
-              <button type="button" class="btn btn-danger">Delete</button>
+              <a href="/delete/<%= item._id %>">
+                <button type="button" class="btn btn-danger">Delete</button>
+              </a>
             </td>
           </tr>
           <% } %> <% }) %>
